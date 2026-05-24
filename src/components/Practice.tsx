@@ -3,10 +3,10 @@ import flagImage from "../assets/marx-lenin-ho-chi-minh.jpg";
 
 function Practice() {
   return (
-    <section className="practice-section">
+    <section className="practice-section" id="practice">
       <div className="practice-container">
         <h2 className="practice-title">Liên hệ thực tiễn</h2>
-        <div className="practice-hero">
+        <div className="practice-hero hover-card reveal">
           <img
             src={flagImage}
             alt="Lá cờ Mác–Lênin và Hồ Chí Minh"
@@ -14,17 +14,21 @@ function Practice() {
           />
         </div>
         <article className="practice-content">
-          <div className="practice-block">
+          <div className="practice-block hover-card reveal">
             <h3>Vai trò của kiến trúc thượng tầng</h3>
-            <p>
-              Các bộ phận của kiến trúc thượng tầng có vai trò hình thành đời
-              sống tinh thần, tư tưởng và chế độ chính trị của một xã hội. Trong
-              đó, hệ tư tưởng chính trị, pháp luật cùng các tổ chức như Đảng và
-              Nhà nước là những bộ phận quan trọng nhất.
-            </p>
+            <ul className="practice-list">
+              <li>
+                Hình thành đời sống tinh thần, tư tưởng và chế độ chính trị của
+                một xã hội.
+              </li>
+              <li>
+                Hệ tư tưởng chính trị, pháp luật, Đảng và Nhà nước là những bộ
+                phận quan trọng nhất.
+              </li>
+            </ul>
           </div>
 
-          <div className="practice-block">
+          <div className="practice-block hover-card reveal">
             <h3>Kiến trúc thượng tầng ở Việt Nam</h3>
             <p>
               Ở Việt Nam hiện nay, kiến trúc thượng tầng phát triển theo hai
@@ -43,18 +47,21 @@ function Practice() {
             </ul>
           </div>
 
-          <div className="practice-block">
+          <div className="practice-block hover-card reveal">
             <h3>Mối quan hệ giữa hai thành phần</h3>
-            <p>
-              Việc củng cố kiến trúc thượng tầng song song với phát triển cơ sở
-              hạ tầng giúp hoàn thiện thể chế xã hội và thúc đẩy quá trình quá
-              độ lên chủ nghĩa xã hội diễn ra nhanh và phù hợp hơn.
-            </p>
-            <p>
-              Kiến trúc thượng tầng xã hội chủ nghĩa phản ánh cơ sở hạ tầng xã
-              hội chủ nghĩa, đồng thời việc xây dựng kiến trúc thượng tầng cũng
-              tạo tiền đề cho sự hình thành và phát triển của cơ sở hạ tầng.
-            </p>
+            <ul className="practice-list">
+              <li>
+                Củng cố kiến trúc thượng tầng song song với phát triển cơ sở hạ
+                tầng giúp hoàn thiện thể chế xã hội và thúc đẩy quá trình quá độ
+                lên chủ nghĩa xã hội diễn ra nhanh và phù hợp hơn.
+              </li>
+              <li>
+                Kiến trúc thượng tầng xã hội chủ nghĩa phản ánh cơ sở hạ tầng xã
+                hội chủ nghĩa, đồng thời việc xây dựng kiến trúc thượng tầng
+                cũng tạo tiền đề cho sự hình thành và phát triển của cơ sở hạ
+                tầng.
+              </li>
+            </ul>
           </div>
 
           {/* <div className="practice-block">
