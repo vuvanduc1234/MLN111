@@ -30,6 +30,9 @@ function Header() {
   return (
     <header className="philo-header">
       <div className="brand">
+        <div className="brand-logo-box" aria-hidden="true">
+          <span className="brand-mark">ML</span>
+        </div>
         <div className="brand-text">
           <p className="brand-name">
             Triết học <span>Mác–Lênin</span>
