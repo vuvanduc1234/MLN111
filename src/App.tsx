@@ -407,6 +407,36 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>(".reveal"),
+    );
+    if (elements.length === 0) {
+      return;
+    }
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries, activeObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("is-visible");
+            activeObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
+    );
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, [activeHash]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [activeHash]);
+
+  useEffect(() => {
     if (!activeCell) {
       setSelectedOption(null);
       setIsAnswerCorrect(null);
@@ -426,126 +456,395 @@ function App() {
     };
   }, [activeCell]);
 
+  const renderPlaceholder = (title: string, description: string) => (
+    <section className="page-shell placeholder-page">
+      <header className="page-hero reveal">
+        <h1 className="page-title">{title}</h1>
+        <p className="page-subtitle">Đang hoàn thiện nội dung. {description}</p>
+        <div className="page-actions">
+          <a className="btn-ghost" href="#home">
+            Quay về trang chủ
+          </a>
+        </div>
+      </header>
+    </section>
+  );
+
+  const renderPage = () => {
+    switch (activeHash) {
+      case "concept":
+        return (
+          <section className="page-shell concept-page" id="concept">
+            <header className="page-hero reveal">
+              <h1 className="page-title">
+                Khái niệm: Cơ sở hạ tầng và Kiến trúc thượng tầng
+              </h1>
+              <p className="page-subtitle">
+                Hai khái niệm nền tảng tạo nên cấu trúc đời sống xã hội. Lật thẻ
+                để đọc đầy đủ định nghĩa.
+              </p>
+            </header>
+
+            <div className="concept-grid">
+              <article
+                className="flip-card hover-card reveal"
+                tabIndex={0}
+                role="button"
+                aria-label="Lật thẻ cơ sở hạ tầng"
+              >
+                <div className="flip-card-inner">
+                  <div className="flip-face flip-front">
+                    <div className="flip-header">
+                      <span className="flip-badge">Cơ sở hạ tầng</span>
+                      <span className="flip-hint">Lật thẻ</span>
+                    </div>
+                    <h3 className="flip-title">Trục kinh tế của xã hội</h3>
+                    <ul className="flip-list">
+                      <li>Quan hệ sản xuất thống trị</li>
+                      <li>Quan hệ sản xuất tàn dư</li>
+                      <li>Quan hệ sản xuất mầm mống</li>
+                    </ul>
+                  </div>
+                  <div className="flip-face flip-back">
+                    <p className="flip-label">Định nghĩa</p>
+                    <ul className="detail-list">
+                      <li>
+                        Là toàn bộ những quan hệ sản xuất hợp thành cơ cấu kinh
+                        tế của xã hội trong một giai đoạn lịch sử nhất định.
+                      </li>
+                      <li>
+                        Kết cấu gồm: quan hệ sản xuất thống trị, quan hệ sản
+                        xuất tàn dư, quan hệ sản xuất mầm mống.
+                      </li>
+                      <li>
+                        Quan hệ sản xuất thống trị đặc trưng cho cơ sở hạ tầng
+                        của xã hội đó.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                className="flip-card hover-card reveal"
+                tabIndex={0}
+                role="button"
+                aria-label="Lật thẻ kiến trúc thượng tầng"
+              >
+                <div className="flip-card-inner">
+                  <div className="flip-face flip-front">
+                    <div className="flip-header">
+                      <span className="flip-badge">Kiến trúc thượng tầng</span>
+                      <span className="flip-hint">Lật thẻ</span>
+                    </div>
+                    <h3 className="flip-title">Không gian tư tưởng xã hội</h3>
+                    <ul className="flip-list">
+                      <li>Hệ thống quan điểm tư tưởng</li>
+                      <li>Thiết chế chính trị - xã hội</li>
+                      <li>Quan hệ nội tại của thượng tầng</li>
+                    </ul>
+                  </div>
+                  <div className="flip-face flip-back">
+                    <p className="flip-label">Định nghĩa</p>
+                    <ul className="detail-list">
+                      <li>
+                        Là toàn bộ những quan điểm, tư tưởng cùng với những
+                        thiết chế xã hội tương ứng, cùng những quan hệ nội tại
+                        của thượng tầng hình thành trên cơ sở hạ tầng nhất định.
+                      </li>
+                      <li>
+                        Kết cấu gồm hệ thống các quan điểm tư tưởng: chính trị,
+                        pháp quyền, tôn giáo, đạo đức, nghệ thuật, khoa học...
+                      </li>
+                      <li>
+                        Và các thiết chế chính trị - xã hội tương ứng: Đảng
+                        phái, nhà nước, các đoàn thể, giáo hội...
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+        );
+      case "relation":
+        return (
+          <section className="page-shell relation-page" id="relation">
+            <header className="page-hero reveal">
+              <h1 className="page-title">
+                Quan hệ biện chứng: Cơ sở hạ tầng và Kiến trúc thượng tầng
+              </h1>
+              <p className="page-subtitle">
+                Cơ sở hạ tầng và kiến trúc thượng tầng là hai mặt của đời sống
+                xã hội, thống nhất biện chứng với nhau.
+              </p>
+            </header>
+
+            <div className="relation-bento">
+              <article className="relation-panel is-wide hover-card reveal">
+                <p className="relation-eyebrow">Tổng quan</p>
+                <h3>Hai mặt thống nhất</h3>
+                <ul className="detail-list">
+                  <li>
+                    Cơ sở hạ tầng và kiến trúc thượng tầng là hai mặt của đời
+                    sống xã hội.
+                  </li>
+                  <li>Hai mặt này thống nhất biện chứng với nhau.</li>
+                </ul>
+              </article>
+
+              <article className="relation-panel hover-card reveal">
+                <p className="relation-eyebrow">Vai trò quyết định</p>
+                <h3>Cơ sở hạ tầng định hình thượng tầng</h3>
+                <ul className="detail-list">
+                  <li>
+                    Tính chất của kiến trúc thượng tầng do tính chất của cơ sở
+                    hạ tầng quyết định.
+                  </li>
+                  <li>
+                    Tất cả các yếu tố của kiến trúc thượng tầng đều trực tiếp
+                    hay gián tiếp phụ thuộc vào cơ sở hạ tầng.
+                  </li>
+                  <li>
+                    Những thay đổi của cơ sở hạ tầng tất yếu đưa đến sự thay đổi
+                    trong kiến trúc thượng tầng.
+                  </li>
+                </ul>
+              </article>
+
+              <article className="relation-panel hover-card reveal">
+                <p className="relation-eyebrow">Tác động trở lại</p>
+                <h3>Kiến trúc thượng tầng phản hồi</h3>
+                <ul className="detail-list">
+                  <li>Có tính độc lập tương đối.</li>
+                  <li>
+                    Bảo vệ, duy trì, củng cố và phát triển cơ sở hạ tầng sinh ra
+                    nó.
+                  </li>
+                  <li>Đồng thời đấu tranh xóa bỏ cái cũ.</li>
+                  <li>
+                    Tác động theo hai xu hướng: tích cực (thúc đẩy phát triển
+                    nếu phù hợp nhu cầu khách quan) và tiêu cực (kìm hãm phát
+                    triển nếu không phù hợp).
+                  </li>
+                </ul>
+              </article>
+
+              <article className="relation-callout is-wide hover-card reveal">
+                <p className="relation-eyebrow">Nhấn mạnh</p>
+                <h3>Nhà nước là yếu tố tác động mạnh nhất</h3>
+                <ul className="detail-list">
+                  <li>
+                    Yếu tố tác động mạnh mẽ nhất, trực tiếp nhất là nhà nước.
+                  </li>
+                  <li>
+                    Sự vận hành của nhà nước quyết định chiều hướng tác động
+                    tích cực hay tiêu cực của kiến trúc thượng tầng đối với cơ
+                    sở hạ tầng.
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </section>
+        );
+      case "practice":
+        return <Practice />;
+      case "evidence":
+        return renderPlaceholder(
+          "Dẫn chứng",
+          "Nội dung đang được hoàn thiện để minh họa rõ hơn cho từng luận điểm.",
+        );
+      case "scenario":
+        return renderPlaceholder(
+          "Tình huống",
+          "Trang này sẽ bổ sung các tình huống học tập để luyện tư duy phản biện.",
+        );
+      case "game":
+        return (
+          <>
+            <section className="game-page-header">
+              <a className="game-back" href="#home">
+                ← Quay về giới thiệu
+              </a>
+            </section>
+
+            <section className="game-shell" id="game">
+              <div className="game-header">
+                <div>
+                  <h2>Đấu trường Chân Lý</h2>
+                  <p>
+                    Click từng ô để mở câu hỏi hoặc ô may mắn. Ô đã chọn sẽ được
+                    đánh dấu.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rule-panel" aria-label="Quy tắc trò chơi">
+                <div className="rule-title">
+                  <span className="rule-icon">🔥</span>
+                  <div>
+                    <p className="rule-subtitle">
+                      Mini game khám phá kiến thức
+                    </p>
+                    <h3>Đấu trường triết học</h3>
+                  </div>
+                </div>
+                <ol className="rule-list">
+                  <li>Click chọn vòng quay may mắn.</li>
+                  <li>Click một ô bất kỳ để mở.</li>
+                  <li>Ô câu hỏi: chọn đáp án trắc nghiệm cho đến khi đúng.</li>
+                  <li>Ô may mắn sẽ được qua lượt và nhận phần thưởng.</li>
+                  <li>Ô đã mở sẽ được đánh dấu và không chọn lại.</li>
+                </ol>
+              </div>
+
+              <div className="wheel-panel" aria-label="Vòng quay may mắn">
+                <div className="wheel-text">
+                  <p className="wheel-subtitle">Game 1</p>
+                  <h3>Vòng quay may mắn 1–30</h3>
+                  <p>
+                    Quay để lấy số ngẫu nhiên. Số đã trúng sẽ bị loại khỏi vòng
+                    quay.
+                  </p>
+                  <div className="wheel-meta">
+                    <span>Còn lại: {spinPool.length}</span>
+                    <span>Kết quả gần nhất: {lastSpinNumber ?? "--"}</span>
+                  </div>
+                  <button
+                    type="button"
+                    className="spin-button"
+                    onClick={handleSpin}
+                    disabled={isSpinning || spinPool.length === 0}
+                  >
+                    {isSpinning ? "Đang quay..." : "Quay ngay"}
+                  </button>
+                </div>
+                <div className="wheel-wrap">
+                  <div className="wheel-pointer" />
+                  <div
+                    className={`wheel${isSpinning ? " is-spinning" : ""}`}
+                    style={{ transform: `rotate(${spinAngle}deg)` }}
+                    aria-live="polite"
+                  >
+                    <div className="wheel-center">{lastSpinNumber ?? "🎴"}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="board-grid"
+                role="grid"
+                aria-label="Lưới mini game 30 ô"
+              >
+                {board.map((cell, index) => {
+                  const isSelected = selected.has(cell.id);
+                  const [toneA, toneB] = palette[index % palette.length];
+                  const iconLabel = isSelected
+                    ? cell.kind === "lucky"
+                      ? "🍀"
+                      : "Q"
+                    : "🎴";
+                  return (
+                    <button
+                      key={cell.id}
+                      type="button"
+                      className="board-cell"
+                      data-kind={cell.kind}
+                      data-selected={isSelected}
+                      style={{
+                        ["--cell-tone-a" as string]: toneA,
+                        ["--cell-tone-b" as string]: toneB,
+                      }}
+                      onClick={() => handleCellClick(cell)}
+                      disabled={isSelected}
+                      aria-label={`Ô số ${cell.id}`}
+                    >
+                      <span className="cell-inner">
+                        <span className="cell-front">
+                          <span className="cell-index">
+                            {cell.id.toString().padStart(2, "0")}
+                          </span>
+                          <span className="cell-icon">{iconLabel}</span>
+                        </span>
+                        <span className="cell-back">Đã mở</span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          </>
+        );
+      default:
+        return (
+          <section className="page-shell home-page" id="home">
+            <header className="page-hero reveal">
+              <h1 className="page-title">
+                Cơ sở hạ tầng &amp; Kiến trúc thượng tầng
+              </h1>
+              <p className="page-subtitle">
+                Khám phá cấu trúc nền tảng của đời sống xã hội qua góc nhìn
+                triết học Mác–Lênin: từ cơ sở kinh tế đến hệ thống tư tưởng và
+                thiết chế xã hội.
+              </p>
+              <div className="page-actions">
+                <a className="btn-primary" href="#concept">
+                  Khám phá khái niệm
+                </a>
+                <a className="btn-ghost" href="#relation">
+                  Mối quan hệ biện chứng
+                </a>
+              </div>
+            </header>
+
+            <div className="home-grid">
+              <article className="feature-card hover-card reveal">
+                <p className="feature-label">Khái niệm</p>
+                <h3>Cấu trúc nền tảng xã hội</h3>
+                <p>
+                  Tập trung vào các khái niệm then chốt tạo nên cơ sở của đời
+                  sống xã hội trong từng giai đoạn.
+                </p>
+                <a className="feature-link" href="#concept">
+                  Xem chi tiết →
+                </a>
+              </article>
+
+              <article className="feature-card hover-card reveal">
+                <p className="feature-label">Mối quan hệ</p>
+                <h3>Hai chiều tác động</h3>
+                <p>
+                  Làm rõ vai trò quyết định và phản hồi giữa cơ sở hạ tầng và
+                  kiến trúc thượng tầng.
+                </p>
+                <a className="feature-link" href="#relation">
+                  Xem chi tiết →
+                </a>
+              </article>
+
+              <article className="feature-card hover-card reveal">
+                <p className="feature-label">Liên hệ thực tiễn</p>
+                <h3>Góc nhìn Việt Nam</h3>
+                <p>
+                  Gắn kiến thức triết học với bối cảnh thực tế để làm rõ vai trò
+                  của kiến trúc thượng tầng.
+                </p>
+                <a className="feature-link" href="#practice">
+                  Xem chi tiết →
+                </a>
+              </article>
+            </div>
+          </section>
+        );
+    }
+  };
+
   return (
     <div className="page">
       <Header />
 
       <main className={`content${activeHash === "game" ? " game-page" : ""}`}>
-        {activeHash === "practice" && <Practice />}
-
-        {activeHash !== "game" ? null : (
-          <section className="game-page-header">
-            <a className="game-back" href="#home">
-              ← Quay về giới thiệu
-            </a>
-          </section>
-        )}
-
-        {activeHash === "game" && (
-          <section className="game-shell" id="game">
-            <div className="game-header">
-              <div>
-                <h2>Đấu trường Chân Lý</h2>
-                <p>
-                  Click từng ô để mở câu hỏi hoặc ô may mắn. Ô đã chọn sẽ được
-                  đánh dấu.
-                </p>
-              </div>
-            </div>
-
-            <div className="rule-panel" aria-label="Quy tắc trò chơi">
-              <div className="rule-title">
-                <span className="rule-icon">🔥</span>
-                <div>
-                  <p className="rule-subtitle">Mini game khám phá kiến thức</p>
-                  <h3>Đấu trường triết học</h3>
-                </div>
-              </div>
-              <ol className="rule-list">
-                <li>Click chọn vòng quay may mắn.</li>
-                <li>Click một ô bất kỳ để mở.</li>
-                <li>Ô câu hỏi: chọn đáp án trắc nghiệm cho đến khi đúng.</li>
-                <li>Ô may mắn sẽ được qua lượt và nhận phần thưởng.</li>
-                <li>Ô đã mở sẽ được đánh dấu và không chọn lại.</li>
-              </ol>
-            </div>
-
-            <div className="wheel-panel" aria-label="Vòng quay may mắn">
-              <div className="wheel-text">
-                <p className="wheel-subtitle">Game 1</p>
-                <h3>Vòng quay may mắn 1–30</h3>
-                <p>
-                  Quay để lấy số ngẫu nhiên. Số đã trúng sẽ bị loại khỏi vòng
-                  quay.
-                </p>
-                <div className="wheel-meta">
-                  <span>Còn lại: {spinPool.length}</span>
-                  <span>Kết quả gần nhất: {lastSpinNumber ?? "--"}</span>
-                </div>
-                <button
-                  type="button"
-                  className="spin-button"
-                  onClick={handleSpin}
-                  disabled={isSpinning || spinPool.length === 0}
-                >
-                  {isSpinning ? "Đang quay..." : "Quay ngay"}
-                </button>
-              </div>
-              <div className="wheel-wrap">
-                <div className="wheel-pointer" />
-                <div
-                  className={`wheel${isSpinning ? " is-spinning" : ""}`}
-                  style={{ transform: `rotate(${spinAngle}deg)` }}
-                  aria-live="polite"
-                >
-                  <div className="wheel-center">{lastSpinNumber ?? "🎴"}</div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="board-grid"
-              role="grid"
-              aria-label="Lưới mini game 30 ô"
-            >
-              {board.map((cell, index) => {
-                const isSelected = selected.has(cell.id);
-                const [toneA, toneB] = palette[index % palette.length];
-                const iconLabel = isSelected
-                  ? cell.kind === "lucky"
-                    ? "🍀"
-                    : "Q"
-                  : "🎴";
-                return (
-                  <button
-                    key={cell.id}
-                    type="button"
-                    className="board-cell"
-                    data-kind={cell.kind}
-                    data-selected={isSelected}
-                    style={{
-                      ["--cell-tone-a" as string]: toneA,
-                      ["--cell-tone-b" as string]: toneB,
-                    }}
-                    onClick={() => handleCellClick(cell)}
-                    disabled={isSelected}
-                    aria-label={`Ô số ${cell.id}`}
-                  >
-                    <span className="cell-inner">
-                      <span className="cell-front">
-                        <span className="cell-index">
-                          {cell.id.toString().padStart(2, "0")}
-                        </span>
-                        <span className="cell-icon">{iconLabel}</span>
-                      </span>
-                      <span className="cell-back">Đã mở</span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </section>
-        )}
+        {renderPage()}
       </main>
 
       {activeCell && (
