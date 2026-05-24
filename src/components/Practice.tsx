@@ -57,14 +57,14 @@ function Practice() {
             </p>
           </div>
 
-          <div className="practice-block">
+          {/* <div className="practice-block">
             <h3>Ứng dụng trong nền kinh tế thị trường</h3>
             <p>
               Trong nền kinh tế thị trường định hướng xã hội chủ nghĩa ở Việt
               Nam, kiến trúc thượng tầng thể hiện vai trò thông qua sự lãnh đạo
               kinh tế của Đảng và sự quản lý kinh tế của Nhà nước.
             </p>
-          </div>
+          </div> */}
         </article>
       </div>
     </section>
