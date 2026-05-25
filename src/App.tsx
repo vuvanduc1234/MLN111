@@ -457,20 +457,6 @@ function App() {
     };
   }, [activeCell]);
 
-  const renderPlaceholder = (title: string, description: string) => (
-    <section className="page-shell placeholder-page">
-      <header className="page-hero reveal">
-        <h1 className="page-title">{title}</h1>
-        <p className="page-subtitle">Đang hoàn thiện nội dung. {description}</p>
-        <div className="page-actions">
-          <a className="btn-ghost" href="#home">
-            Quay về trang chủ
-          </a>
-        </div>
-      </header>
-    </section>
-  );
-
   const renderPage = () => {
     switch (activeHash) {
       case "concept":
