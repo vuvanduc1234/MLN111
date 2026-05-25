@@ -135,27 +135,6 @@ const lessonSteps = [
   },
 ];
 
-const solutionPhases = [
-  {
-    phase: "Giai đoạn 1",
-    time: "6–18 tháng",
-    title: "Cải tạo CSHT",
-    body: "Tự động hóa lò nung bằng cảm biến IoT, robot hóa khâu ép và phân loại, triển khai phần mềm quản lý ca kíp thông minh. Mục tiêu: giảm phụ thuộc con người vào thời điểm cố định, tạo nền cho sự linh hoạt có kiểm soát.",
-  },
-  {
-    phase: "Giai đoạn 2",
-    time: "Song song giai đoạn 1",
-    title: "Văn hóa phân tầng",
-    body: "Không áp một văn hóa cho toàn công ty. Dây chuyền sản xuất giữ kỷ luật nghiêm ngặt. Bộ phận R&D và marketing được áp dụng văn hóa linh hoạt, sáng tạo — vì CSHT ở đó cho phép.",
-  },
-  {
-    phase: "Giai đoạn 3",
-    time: "Dài hạn",
-    title: "Đổi mới sản phẩm",
-    body: "Mở bộ phận gạch thiết kế cao cấp và kênh thương mại điện tử. Khi tỷ trọng lao động tri thức tăng lên, văn hóa cởi mở tự nhiên lan rộng toàn công ty — không cần áp đặt.",
-  },
-];
-
 /* ════════════════════════════════════════
    STORY SLIDESHOW
 ════════════════════════════════════════ */
@@ -431,43 +410,6 @@ function AnalysisSection() {
 }
 
 /* ════════════════════════════════════════
-   SOLUTION SECTION
-════════════════════════════════════════ */
-function SolutionSection() {
-  return (
-    <section className="sl-root" aria-label="Giải pháp cho công ty gạch men">
-      <div className="sl-header">
-        <div className="sl-badge">🧭 Giải pháp</div>
-        <h3 className="sl-title">Giải pháp cho công ty gạch men</h3>
-        <p className="sl-sub">
-          3 giai đoạn thực hiện để chuyển đổi CSHT, tạo nên KTTT phù hợp và bền
-          vững.
-        </p>
-      </div>
-
-      <div className="sl-grid">
-        {solutionPhases.map((p, i) => (
-          <article key={p.phase} className="sl-card">
-            <div className="sl-card-top">
-              <span className="sl-phase">{p.phase}</span>
-              <span className="sl-time">{p.time}</span>
-            </div>
-            <h4 className="sl-card-title">{p.title}</h4>
-            <p className="sl-card-body">{p.body}</p>
-            <div className="sl-index">{String(i + 1).padStart(2, "0")}</div>
-          </article>
-        ))}
-      </div>
-
-      <div className="sl-quote">
-        “Muốn công nhân làm việc như kỹ sư Google — hãy cho họ làm việc với máy
-        móc như Google trước đã.”
-      </div>
-    </section>
-  );
-}
-
-/* ════════════════════════════════════════
    ROOT COMPONENT
 ════════════════════════════════════════ */
 function Scenario() {
@@ -492,8 +434,159 @@ function Scenario() {
       {/* Part 2 — Analysis */}
       <AnalysisSection />
 
-      {/* Part 3 — Solution */}
-      <SolutionSection />
+      {/* Part 2.5 — Solution */}
+      <section className="solution-section">
+        <div className="solution-header">
+          <span className="solution-badge">🧭 Giải pháp</span>
+          <h3>Giải pháp cho công ty gạch men</h3>
+          <p>
+            3 giai đoạn thực hiện để chuyển đổi CSHT, tạo nên KTTT phù hợp và
+            bền vững.
+          </p>
+        </div>
+
+        <div className="solution-grid">
+          <article className="solution-card">
+            <div className="solution-card-top">
+              <span>Giai đoạn 1</span>
+              <span className="solution-time">6-18 tháng</span>
+            </div>
+            <h4>Cải tạo CSHT</h4>
+            <p>
+              Tự động hóa lò nung bằng cảm biến IoT, robot hóa khâu ép và phân
+              loại, triển khai phần mềm quản lý ca kíp thông minh. Mục tiêu:
+              giảm phụ thuộc con người vào thời điểm cố định, tạo nên sự linh
+              hoạt có kiểm soát.
+            </p>
+          </article>
+
+          <article className="solution-card">
+            <div className="solution-card-top">
+              <span>Giai đoạn 2</span>
+              <span className="solution-time">Song song giai đoạn 1</span>
+            </div>
+            <h4>Văn hóa phân tầng</h4>
+            <p>
+              Không áp một văn hóa cho toàn công ty. Dây chuyền sản xuất giữ kỷ
+              luật nghiêm ngặt. Bộ phận R&amp;D và marketing được áp dụng văn hóa
+              linh hoạt, sáng tạo - vì CSHT ở đó cho phép.
+            </p>
+          </article>
+
+          <article className="solution-card">
+            <div className="solution-card-top">
+              <span>Giai đoạn 3</span>
+              <span className="solution-time">Dài hạn</span>
+            </div>
+            <h4>Đổi mới sản phẩm</h4>
+            <p>
+              Mở bộ phận gạch thiết kế cao cấp và kênh thương mại điện tử. Khi
+              tỷ trọng lao động tri thức tăng lên, văn hóa cởi mở tự nhiên lan
+              rộng toàn công ty - không cần áp đặt.
+            </p>
+          </article>
+        </div>
+
+        <div className="solution-quote">
+          "Muốn công nhân làm việc như kỹ sư Google - hãy cho họ làm việc với
+          máy móc như Google trước đã."
+        </div>
+
+        <div className="solution-image">
+          <img src={imgSolution} alt="Giải pháp chuyển đổi CSHT và KTTT" />
+          <div className="solution-image-caption">
+            ✨ Cải tạo CSHT (tự động hóa, IoT) - xây dựng KTTT mới phù hợp - phát
+            triển bền vững
+          </div>
+        </div>
+      </section>
+
+      {/* Part 3 — Responsible AI */}
+      <section className="ai-section">
+        <div className="ai-header">
+          <div className="ai-badge">🤖 Ứng dụng AI có trách nhiệm</div>
+          <h3 className="ai-title">
+            Minh bạch – Có trách nhiệm – Sáng tạo – Liêm chính học thuật
+          </h3>
+          <p className="ai-subtitle">
+            Nhóm sử dụng AI như trợ lý kỹ thuật, đồng thời tự chịu trách nhiệm
+            về nội dung, logic và tính học thuật.
+          </p>
+        </div>
+
+        <div className="ai-grid">
+          <article className="ai-card">
+            <div className="ai-card-head">
+              <span className="ai-card-num">01</span>
+              <h4>Minh bạch</h4>
+            </div>
+            <p><strong>Công cụ:</strong> ChatGPT / Gemini.</p>
+            <p>
+              <strong>Mục đích:</strong> Hỗ trợ viết code khung (HTML/CSS) và
+              thuật toán lọc dữ liệu thô.
+            </p>
+            <p>
+              <strong>Prompt chính:</strong> "Viết code HTML/Tailwind CSS tạo bảng
+              so sánh responsive giữa CSHT và KTTT trong kinh tế số."
+            </p>
+            <p>
+              <strong>Kết quả AI:</strong> Đoạn mã giao diện thô và hàm JavaScript
+              lọc dữ liệu cơ bản.
+            </p>
+            <p>
+              <strong>Sinh viên chỉnh sửa:</strong> Tự tối ưu UI/UX theo theme,
+              fix lỗi responsive trên di động và nạp dữ liệu thực tế thay cho dữ
+              liệu giả.
+            </p>
+          </article>
+
+          <article className="ai-card">
+            <div className="ai-card-head">
+              <span className="ai-card-num">02</span>
+              <h4>Có trách nhiệm</h4>
+            </div>
+            <p>
+              <strong>Kiểm chứng:</strong> Nội dung lý luận đối chiếu Giáo trình
+              Triết học Mác - Lênin (Chương 3). Dẫn chứng thực tế kiểm chứng qua
+              Báo Điện tử Chính phủ (dx.gov.vn).
+            </p>
+            <p>
+              <strong>Trách nhiệm:</strong> Sinh viên tự rà soát, chịu trách nhiệm
+              100% về nội dung hiển thị và tính an toàn của mã nguồn.
+            </p>
+          </article>
+
+          <article className="ai-card">
+            <div className="ai-card-head">
+              <span className="ai-card-num">03</span>
+              <h4>Sáng tạo</h4>
+            </div>
+            <p>
+              AI đóng vai trò trợ lý giúp xây dựng tính năng Quiz trắc nghiệm
+              tương tác trên giao diện Web, giúp tăng tính trải nghiệm thay vì
+              đọc văn bản tĩnh.
+            </p>
+          </article>
+
+          <article className="ai-card">
+            <div className="ai-card-head">
+              <span className="ai-card-num">04</span>
+              <h4>Liêm chính học thuật</h4>
+            </div>
+            <p>
+              <strong>Cam kết văn bản:</strong> Nhóm cam kết sử dụng AI làm công cụ
+              hỗ trợ lập trình và gợi ý cấu trúc. Toàn bộ tư duy logic, kiến trúc
+              hệ thống và lập luận cốt lõi do sinh viên tự thực hiện, không để AI
+              làm thay hoàn toàn.
+            </p>
+            <p>
+              <strong>Phân định rõ ràng:</strong> AI chỉ gợi ý khung code và thuật
+              toán thô; sinh viên trực tiếp tối ưu code, viết nội dung phân tích
+              biện chứng và vận hành hệ thống.
+            </p>
+          </article>
+        </div>
+      </section>
     </section>
   );
 }
