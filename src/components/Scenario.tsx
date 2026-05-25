@@ -39,10 +39,10 @@ const slides = [
     image: imgDirector,
     accent: "rgba(245,158,11,0.85)",
     bullets: [
-      '✈️  Ông Minh về nước sau 2 năm MBA tại Mỹ',
-      '🎱  Lắp bàn bi-a, ghế lười giữa phân xưởng sản xuất',
+      "✈️  Ông Minh về nước sau 2 năm MBA tại Mỹ",
+      "🎱  Lắp bàn bi-a, ghế lười giữa phân xưởng sản xuất",
       '👕  Bỏ đồng phục bảo hộ — "tự do mặc gì cũng được"',
-      '🕓  Cho phép công nhân đến làm bất cứ lúc nào họ muốn',
+      "🕓  Cho phép công nhân đến làm bất cứ lúc nào họ muốn",
     ],
     callout: {
       icon: "💡",
@@ -90,7 +90,7 @@ const whyCards = [
     bg: "rgba(245,158,11,0.08)",
     border: "rgba(245,158,11,0.3)",
     title: "KTTT Google sinh từ CSHT khác hoàn toàn",
-    body: 'Google = lao động tri thức, sản phẩm vô hình, không có dây chuyền vật lý. Kỹ sư đến muộn 2 tiếng không làm máy chủ phát nổ. Nhưng công nhân ca lò nung trễ 30 phút = hỏng cả mẻ sản xuất. Hai CSHT → không thể dùng chung một KTTT.',
+    body: "Google = lao động tri thức, sản phẩm vô hình, không có dây chuyền vật lý. Kỹ sư đến muộn 2 tiếng không làm máy chủ phát nổ. Nhưng công nhân ca lò nung trễ 30 phút = hỏng cả mẻ sản xuất. Hai CSHT → không thể dùng chung một KTTT.",
     tag: "So sánh CSHT",
   },
   {
@@ -151,12 +151,12 @@ function StorySlideshow() {
       setAnimating(true);
       setTimeout(() => {
         setCurrent((c) =>
-          dir === "next" ? (c + 1) % total : (c - 1 + total) % total
+          dir === "next" ? (c + 1) % total : (c - 1 + total) % total,
         );
         setAnimating(false);
       }, 350);
     },
-    [animating, total]
+    [animating, total],
   );
 
   useEffect(() => {
@@ -181,16 +181,14 @@ function StorySlideshow() {
         <div className="ss-img-overlay" />
 
         {/* Badge */}
-        <div
-          className="ss-badge"
-          style={{ background: slide.badgeColor }}
-        >
+        <div className="ss-badge" style={{ background: slide.badgeColor }}>
           {slide.badge}
         </div>
 
         {/* Slide counter */}
         <div className="ss-counter">
-          {String(current + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(total).padStart(2, "0")}
+          {String(current + 1).padStart(2, "0")}&nbsp;/&nbsp;
+          {String(total).padStart(2, "0")}
         </div>
 
         {/* Dot nav */}
@@ -219,7 +217,11 @@ function StorySlideshow() {
 
           <ul className="ss-bullets">
             {slide.bullets.map((b, i) => (
-              <li key={i} className="ss-bullet" style={{ animationDelay: `${i * 80}ms` }}>
+              <li
+                key={i}
+                className="ss-bullet"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
                 {b}
               </li>
             ))}
@@ -309,7 +311,10 @@ function AnalysisSection() {
         <div className="an-panel" key="why">
           <div className="an-panel-header">
             <h3>Tại sao văn hóa "Tự do sáng tạo" thất bại?</h3>
-            <p>Phân tích theo quy luật: <em>Cơ sở hạ tầng quyết định Kiến trúc thượng tầng</em></p>
+            <p>
+              Phân tích theo quy luật:{" "}
+              <em>Cơ sở hạ tầng quyết định Kiến trúc thượng tầng</em>
+            </p>
           </div>
 
           <div className="an-cards">
@@ -317,11 +322,13 @@ function AnalysisSection() {
               <div
                 key={c.num}
                 className="an-card"
-                style={{
-                  "--c-color": c.color,
-                  "--c-bg": c.bg,
-                  "--c-border": c.border,
-                } as React.CSSProperties}
+                style={
+                  {
+                    "--c-color": c.color,
+                    "--c-bg": c.bg,
+                    "--c-border": c.border,
+                  } as React.CSSProperties
+                }
               >
                 <div className="an-card-num">{c.num}</div>
                 <div className="an-card-icon">{c.icon}</div>
@@ -336,11 +343,11 @@ function AnalysisSection() {
           <div className="an-conclusion">
             <span className="an-conclusion-icon">⚖️</span>
             <div>
-              <strong>Kết luận biện chứng:</strong>{" "}
-              CSHT (dây chuyền gạch men) <mark>quyết định</mark> yêu cầu
-              của KTTT (văn hóa lao động). KTTT không phù hợp sẽ{" "}
-              <mark>kìm hãm</mark> thay vì thúc đẩy lực lượng sản xuất —
-              đây là quy luật phổ quát mà Triết học Mác–Lênin đã chỉ rõ.
+              <strong>Kết luận biện chứng:</strong> CSHT (dây chuyền gạch men){" "}
+              <mark>quyết định</mark> yêu cầu của KTTT (văn hóa lao động). KTTT
+              không phù hợp sẽ <mark>kìm hãm</mark> thay vì thúc đẩy lực lượng
+              sản xuất — đây là quy luật phổ quát mà Triết học Mác–Lênin đã chỉ
+              rõ.
             </div>
           </div>
         </div>
@@ -367,7 +374,11 @@ function AnalysisSection() {
                 <div className="an-step-content">
                   <div
                     className="an-step-tag"
-                    style={{ color: s.tagColor, borderColor: s.tagColor + "44", background: s.stepBg }}
+                    style={{
+                      color: s.tagColor,
+                      borderColor: s.tagColor + "44",
+                      background: s.stepBg,
+                    }}
                   >
                     {s.tag}
                   </div>
@@ -387,7 +398,8 @@ function AnalysisSection() {
             />
             <div className="an-solution-overlay">
               <p className="an-solution-text">
-                ✨ Cải tạo CSHT (tự động hóa, IoT) → xây dựng KTTT mới phù hợp → phát triển bền vững
+                ✨ Cải tạo CSHT (tự động hóa, IoT) → xây dựng KTTT mới phù hợp →
+                phát triển bền vững
               </p>
             </div>
           </div>
@@ -410,9 +422,9 @@ function Scenario() {
           Khi văn hóa Google gặp nhà máy gạch men
         </h2>
         <p className="sc-header-sub">
-          Một bài học đắt giá về biện chứng giữa{" "}
-          <strong>Cơ sở hạ tầng</strong> và{" "}
-          <strong>Kiến trúc thượng tầng</strong> — nhìn từ thực tiễn doanh nghiệp Việt Nam.
+          Một bài học đắt giá về biện chứng giữa <strong>Cơ sở hạ tầng</strong>{" "}
+          và <strong>Kiến trúc thượng tầng</strong> — nhìn từ thực tiễn doanh
+          nghiệp Việt Nam.
         </p>
       </div>
 
@@ -508,9 +520,7 @@ function Scenario() {
               <span className="ai-card-num">01</span>
               <h4>Minh bạch</h4>
             </div>
-            <p>
-              <strong>Công cụ:</strong> ChatGPT / Gemini.
-            </p>
+            <p><strong>Công cụ:</strong> ChatGPT / Gemini.</p>
             <p>
               <strong>Mục đích:</strong> Hỗ trợ viết code khung (HTML/CSS) và
               thuật toán lọc dữ liệu thô.
