@@ -129,7 +129,7 @@ const lessonSteps = [
     stepColor: "#10b981",
     stepBg: "rgba(16,185,129,0.1)",
     title: "KTTT chỉ tích cực khi phù hợp CSHT",
-    body: "Áp dụng có chọn lọc: Kỷ luật nghiêm ngặt ở dây chuyền nung — linh hoạt sáng tạo ở bộ phận R&D thiết kế mẫu. Mỗi bộ phận CSHT khác nhau cần KTTT tương ứng.",
+    body: "Áp dụng có chọn lọc: Kỷ luật nghiêm ngặt ở dây chuyền nung — linh hoạt sáng tạo ở bộ phận nghiên cứu và phát triển thiết kế mẫu. Mỗi bộ phận CSHT khác nhau cần KTTT tương ứng.",
     tag: "Giải pháp thực tiễn",
     tagColor: "#10b981",
   },
