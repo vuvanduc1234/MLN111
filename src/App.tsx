@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Practice from "./components/Practice";
+import Scenario from "./components/Scenario";
 
 type Question = {
   id: number;
@@ -432,6 +433,8 @@ function App() {
 
       <main className={`content${activeHash === "game" ? " game-page" : ""}`}>
         {activeHash === "practice" && <Practice />}
+
+        {activeHash === "scenario" && <Scenario />}
 
         {activeHash !== "game" ? null : (
           <section className="game-page-header">
