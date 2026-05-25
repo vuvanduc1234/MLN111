@@ -468,7 +468,7 @@ function Scenario() {
             <h4>Văn hóa phân tầng</h4>
             <p>
               Không áp một văn hóa cho toàn công ty. Dây chuyền sản xuất giữ kỷ
-              luật nghiêm ngặt. Bộ phận R&amp;D và marketing được áp dụng văn hóa
+              luật nghiêm ngặt. Bộ phận nghiên cứu và phát triển và marketing được áp dụng văn hóa
               linh hoạt, sáng tạo - vì CSHT ở đó cho phép.
             </p>
           </article>
