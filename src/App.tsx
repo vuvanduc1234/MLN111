@@ -526,13 +526,6 @@ function App() {
                 </div>
               </article>
 
-        {activeHash === "scenario" && <Scenario />}
-
-        {activeHash !== "game" ? null : (
-          <section className="game-page-header">
-            <a className="game-back" href="#home">
-              ← Quay về giới thiệu
-            </a>
               <article
                 className="flip-card hover-card reveal"
                 tabIndex={0}
@@ -663,10 +656,7 @@ function App() {
           "Nội dung đang được hoàn thiện để minh họa rõ hơn cho từng luận điểm.",
         );
       case "scenario":
-        return renderPlaceholder(
-          "Tình huống",
-          "Trang này sẽ bổ sung các tình huống học tập để luyện tư duy phản biện.",
-        );
+        return <Scenario />;
       case "game":
         return (
           <>
