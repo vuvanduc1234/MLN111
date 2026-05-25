@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Practice from "./components/Practice";
+import Scenario from "./components/Scenario";
 
 type Question = {
   id: number;
@@ -525,6 +526,13 @@ function App() {
                 </div>
               </article>
 
+        {activeHash === "scenario" && <Scenario />}
+
+        {activeHash !== "game" ? null : (
+          <section className="game-page-header">
+            <a className="game-back" href="#home">
+              ← Quay về giới thiệu
+            </a>
               <article
                 className="flip-card hover-card reveal"
                 tabIndex={0}
