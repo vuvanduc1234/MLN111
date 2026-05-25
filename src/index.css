@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+3:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Chakra+Petch:wght@500;600;700&display=swap");
 
 :root {
-  --text: #4a5568;
-  --text-strong: #1a202c;
-  --muted: #6b7280;
-  --bg: #eef1f6;
-  --accent: #2f7ed8;
-  --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
-  --shadow-tight: 0 8px 16px rgba(15, 23, 42, 0.18);
-  --title: 'Playfair Display', 'Times New Roman', serif;
-  --body: 'Source Sans 3', 'Segoe UI', sans-serif;
+  --text: #324154;
+  --text-strong: #0d1626;
+  --muted: #5a6b80;
+  --bg: #eef3ff;
+  --accent: #0f7be5;
+  --accent-strong: #0a64d8;
+  --shadow-soft: 0 20px 46px rgba(12, 18, 30, 0.12);
+  --shadow-tight: 0 10px 22px rgba(12, 18, 30, 0.16);
+  --title: "Chakra Petch", "Be Vietnam Pro", sans-serif;
+  --body: "Be Vietnam Pro", "Segoe UI", sans-serif;
 
-  font: 16px/150% var(--body);
+  font: 16px/160% var(--body);
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -31,9 +32,33 @@ html {
 body {
   margin: 0;
   min-height: 100svh;
-  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.8), transparent 60%),
-    radial-gradient(circle at 20% 40%, rgba(214, 225, 241, 0.9), transparent 55%),
-    linear-gradient(180deg, #e8edf6, #dfe5ef 65%);
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(14, 165, 233, 0.18),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(59, 130, 246, 0.16),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(16, 185, 129, 0.12),
+      transparent 45%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.04) 0 1px,
+      transparent 1px 80px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(15, 23, 42, 0.04) 0 1px,
+      transparent 1px 80px
+    ),
+    linear-gradient(180deg, #f7f9ff 0%, #eef3ff 60%, #e8eef8 100%);
 }
 
 #root {
