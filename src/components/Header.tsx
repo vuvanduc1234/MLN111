@@ -40,6 +40,8 @@ function Header() {
         </div>
       </div>
 
+      <div className="header-divider" aria-hidden="true" />
+
       <nav className="main-nav" aria-label="Chính">
         {navItems.map((item) => (
           <a

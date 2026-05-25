@@ -651,9 +651,98 @@ function App() {
       case "practice":
         return <Practice />;
       case "evidence":
-        return renderPlaceholder(
-          "Dẫn chứng",
-          "Nội dung đang được hoàn thiện để minh họa rõ hơn cho từng luận điểm.",
+        return (
+          <section className="sc-root evidence-root" id="evidence">
+            <div className="sc-header">
+              <div className="sc-header-badge">🧾 Dẫn chứng thực tiễn</div>
+              <h2 className="sc-header-title">
+                CSHT &amp; KTTT qua các dẫn chứng báo chí
+              </h2>
+              <p className="sc-header-sub">
+                Hai minh chứng cụ thể từ báo chí chính thống cho thấy quy luật
+                biện chứng: <strong>CSHT quyết định KTTT</strong> và{" "}
+                <strong>KTTT tác động lại CSHT</strong>.
+              </p>
+            </div>
+
+            <div className="evidence-grid">
+              <article className="evidence-card hover-card reveal">
+                <div className="evidence-media">
+                  <img
+                    src="/csht-td-kttt.png"
+                    alt="CSHT quyết định KTTT"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="evidence-body">
+                  <p className="evidence-pill">CSHT quyết định KTTT</p>
+                  <h3>Phát triển kinh tế số, xã hội số toàn diện</h3>
+                  <p className="evidence-text">
+                    Sự bùng nổ của các mô hình kinh tế số mới buộc kiến trúc
+                    thượng tầng phải thay đổi để thích ứng. Bài báo chỉ rõ sự ra
+                    đời các quyết sách của Bộ Chính trị về kinh tế số chính là
+                    "đột phá quan trọng, hàng đầu, là động lực để phát triển
+                    nhanh lực lượng sản xuất hiện đại, hoàn thiện quan hệ sản
+                    xuất...".
+                  </p>
+                  <blockquote className="evidence-quote">
+                    "Kinh tế số gắn với xã hội số là hai mặt song song của một
+                    quá trình, cái này phát triển được thì thúc đẩy cái kia phát
+                    triển và ngược lại".
+                  </blockquote>
+                  <a
+                    className="evidence-link"
+                    href="https://dangcongsan.org.vn/tin-hoat-dong/phat-trien-kinh-te-so-xa-hoi-so-toan-dien-bao-trum-dat-muc-tieu-tang-truong-gdp-hai-con-so.html"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Đọc bài báo →
+                  </a>
+                  <p className="evidence-source">
+                    "Phát triển kinh tế số, xã hội số toàn diện, bao trùm, đạt
+                    mục tiêu tăng trưởng GDP hai con số", Báo điện tử Đảng Cộng
+                    sản Việt Nam, 2025.
+                  </p>
+                </div>
+              </article>
+
+              <article className="evidence-card hover-card reveal">
+                <div className="evidence-media">
+                  <img
+                    src="/kttt-td-csht.png"
+                    alt="KTTT tác động lại CSHT"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="evidence-body">
+                  <p className="evidence-pill is-alt">KTTT tác động lại CSHT</p>
+                  <h3>Đột phá thể chế, pháp luật để đất nước vươn mình</h3>
+                  <p className="evidence-text">
+                    Khi thượng tầng không phù hợp sẽ cản trở hạ tầng kinh tế, bài
+                    luận của Tổng Bí thư thẳng thắn chỉ ra điểm nghẽn: "tư duy
+                    xây dựng pháp luật trong một số lĩnh vực còn thiên về quản
+                    lý, chất lượng pháp luật chưa theo kịp yêu cầu thực tiễn".
+                    Để giải quyết, giải pháp cốt lõi là phải đổi mới mạnh mẽ tư
+                    duy lập pháp, chuyển từ tư duy quản lý sang tư duy khơi thông
+                    nguồn lực, kiến tạo phát triển để cởi trói cho hạ tầng kinh
+                    tế, giúp đất nước bứt phá.
+                  </p>
+                  <a
+                    className="evidence-link"
+                    href="https://special.nhandan.vn/dot-pha-the-che-phap-luat-de-dat-nuoc-vuon-minh/index.html"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Đọc bài báo →
+                  </a>
+                  <p className="evidence-source">
+                    Tổng Bí thư, "Đột phá thể chế, pháp luật để đất nước vươn
+                    mình", Báo Nhân Dân, 2025.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </section>
         );
       case "scenario":
         return <Scenario />;

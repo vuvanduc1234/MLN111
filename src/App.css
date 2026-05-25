@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 28px 24px 48px;
+  padding: 140px 24px 48px;
   gap: 28px;
 }
 
@@ -617,6 +617,104 @@
   );
   opacity: 0.7;
   pointer-events: none;
+}
+
+.evidence-root {
+  gap: 26px;
+}
+
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.evidence-card {
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(12, 18, 30, 0.08);
+  box-shadow: 0 16px 34px rgba(12, 18, 30, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.evidence-media img {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  background: #ffffff;
+  display: block;
+}
+
+.evidence-body {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.evidence-pill {
+  align-self: flex-start;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.evidence-pill.is-alt {
+  background: rgba(245, 158, 11, 0.16);
+  color: #b45309;
+}
+
+.evidence-body h3 {
+  margin: 0;
+  font-size: 20px;
+  color: var(--text-strong);
+}
+
+.evidence-text {
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.evidence-quote {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.04);
+  border-left: 3px solid rgba(59, 130, 246, 0.5);
+  color: var(--text-strong);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+.evidence-link {
+  align-self: flex-start;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+
+.evidence-link:hover,
+.evidence-link:focus-visible {
+  color: var(--accent-strong);
+  outline: none;
+}
+
+.evidence-source {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 .relation-panel.is-wide {
@@ -1448,6 +1546,10 @@
     padding: 28px 20px;
   }
 
+  .evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
   .relation-bento {
     grid-template-columns: 1fr;
   }
@@ -1473,7 +1575,7 @@
 
 @media (max-width: 720px) {
   .page {
-    padding: 20px 16px 32px;
+    padding: 120px 16px 32px;
   }
 
   .hero {
